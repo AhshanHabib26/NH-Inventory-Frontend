@@ -12,6 +12,7 @@ const Navbar = () => {
   const logOutHandler = () => {
     logOutUser();
     dispatch(SET_LOGIN(false));
+
     navigate("/");
   };
 

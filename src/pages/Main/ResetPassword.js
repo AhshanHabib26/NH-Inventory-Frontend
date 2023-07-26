@@ -17,11 +17,11 @@ const ResetPassword = () => {
     const { passwordOne, passwordTwo } = data;
 
     if (passwordOne.length < 6 || passwordTwo.length < 6) {
-      return toast.error("Passwords Must Be Up To 6 Characters");
+      return toast.error("Passwords Must Be Up To 6 Characters", { id: "NHInventory" });
     }
 
     if (passwordOne !== passwordTwo) {
-      return toast.error("Password Didn't Match");
+      return toast.error("Password Didn't Match", { id: "NHInventory" });
     }
 
     try {
