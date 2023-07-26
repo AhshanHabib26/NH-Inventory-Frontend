@@ -6,6 +6,7 @@ import { BiUser } from "react-icons/bi";
 import { registerUser } from "../../services/authServices";
 import { useDispatch } from "react-redux";
 import { SET_LOGIN, SET_NAME } from "../../redux/features/auth/authSlice";
+import Loader from "../../Loader/Loader";
 
 const Signup = () => {
   const {
@@ -21,8 +22,9 @@ const Signup = () => {
     setIsLoading(true);
     try {
       const resData = await registerUser(data);
-      dispatch(SET_LOGIN(true));
-      dispatch(SET_NAME(data.name));
+      console.log(data)
+      await dispatch(SET_LOGIN(true));
+      await dispatch(SET_NAME(data.name));
       navigate("/dashboard");
       setIsLoading(false);
       console.log(resData);
@@ -34,6 +36,7 @@ const Signup = () => {
 
   return (
     <div className={Styles.bgBackground}>
+      {isLoading && <Loader />}
       <div className=" flex items-center justify-center h-screen">
         <div className="w-full max-w-md bg-white rounded-lg  shadow-2xl">
           <div className="p-3">

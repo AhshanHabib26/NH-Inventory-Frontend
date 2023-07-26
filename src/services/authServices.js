@@ -18,3 +18,19 @@ export const registerUser = async (userData) => {
     toast.error(error.response.data.error, { id: "NHInventory" });
   }
 };
+
+export const loginUser = async (userData) => {
+  try {
+    const res = await axios.post(
+      `${BACKEND_URL}/api/v1/user/login`,
+      userData
+    );
+    if (res.statusText === "OK") {
+      toast.success("Welcome NHInventory App Solution", { id: "NHInventory" });
+    }
+    return res.data;
+  } catch (error) {
+    console.log(error)
+    toast.error(error.response.data.error, { id: "NHInventory" });
+  }
+};
