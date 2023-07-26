@@ -22,7 +22,7 @@ const Signup = () => {
     setIsLoading(true);
     try {
       const resData = await registerUser(data);
-      console.log(data)
+      localStorage.setItem("token", resData.token)
       await dispatch(SET_LOGIN(true));
       await dispatch(SET_NAME(data.name));
       navigate("/dashboard");

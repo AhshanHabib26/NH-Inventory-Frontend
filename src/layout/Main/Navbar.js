@@ -1,7 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { logOutUser } from "../../services/authServices";
+import { SET_LOGIN } from "../../redux/features/auth/authSlice";
 
 const Navbar = () => {
+  const isToken = localStorage.getItem("token");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const logOutHandler = () => {
+    logOutUser();
+    dispatch(SET_LOGIN(false));
+    localStorage.removeItem("token");
+    navigate("/");
+  };
+
   return (
     <div>
       <div className="navbar py-0  bg-teal-700 lg:px-16 md:px-8 px-3">
@@ -13,9 +27,18 @@ const Navbar = () => {
         <div className="flex-none">
           <ul className="menu menu-horizontal px-1">
             <div className="navbar-end">
-              <Link to="/signup" className="btn  btn-md">
-                Register
-              </Link>
+              {isToken ? (
+                <button
+                  onClick={logOutHandler}
+                  className="btn border-0 text-white hover:bg-red-500  bg-red-600 btn-md"
+                >
+                  Logout
+                </button>
+              ) : (
+                <Link to="/signup" className="btn  btn-md">
+                  Register
+                </Link>
+              )}
             </div>
           </ul>
         </div>

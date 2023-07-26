@@ -21,6 +21,8 @@ const Login = () => {
     setIsLoading(true);
     try {
       const resData = await loginUser(data);
+      console.log(resData)
+      localStorage.setItem("token", resData.token)
       await dispatch(SET_LOGIN(true));
       navigate("/dashboard");
       setIsLoading(false);
