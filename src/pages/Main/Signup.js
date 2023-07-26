@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Styles from "../../styles/Login.module.css";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BiUser } from "react-icons/bi";
+import { registerUser } from "../../services/authServices";
+import { useDispatch } from "react-redux";
+import { SET_LOGIN, SET_NAME } from "../../redux/features/auth/authSlice";
 
 const Signup = () => {
   const {
@@ -10,8 +13,24 @@ const Signup = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    setIsLoading(true);
+    try {
+      const resData = await registerUser(data);
+      dispatch(SET_LOGIN(true));
+      dispatch(SET_NAME(data.name));
+      navigate("/dashboard");
+      setIsLoading(false);
+      console.log(resData);
+    } catch (error) {
+      setIsLoading(false);
+      console.log(error.message);
+    }
+  };
 
   return (
     <div className={Styles.bgBackground}>
@@ -55,11 +74,10 @@ const Signup = () => {
                   <span className=" text-red-500">Passowrd is required</span>
                 )}
                 <div className=" mx-2 my-3 flex items-center justify-end">
-                  <p className=" text-md text-slate-500 font-semibold mr-1">Already Have An Account? </p>
-                  <Link
-                    className=" text-tale-800 font-semibold"
-                    to="/login"
-                  >
+                  <p className=" text-md text-slate-500 font-semibold mr-1">
+                    Already Have An Account?{" "}
+                  </p>
+                  <Link className=" text-tale-800 font-semibold" to="/login">
                     Login
                   </Link>
                 </div>
