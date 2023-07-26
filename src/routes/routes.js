@@ -9,6 +9,7 @@ import Home from "../pages/Main/Home";
 import Login from "../pages/Main/Login";
 import Signup from "../pages/Main/Signup";
 import ForgetPassword from "../pages/Main/ForgetPassword";
+import ResetPassword from "../pages/Main/ResetPassword";
 
 const routes = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const routes = createBrowserRouter([
       {
         path: "/forget-password",
         element: <ForgetPassword />,
+      },
+      {
+        path: "/reset-password/:resetToken",
+        element: <ResetPassword />,
       },
     ],
   },
