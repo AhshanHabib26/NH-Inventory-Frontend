@@ -1,8 +1,10 @@
 import React from "react";
 import Styles from "../../styles/Login.module.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { BiHappyAlt } from "react-icons/bi";
+import { toast } from "react-hot-toast";
+import { resetPassword } from "../../services/authServices";
 
 const ResetPassword = () => {
   const {
@@ -10,8 +12,26 @@ const ResetPassword = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const { resetToken } = useParams();
+  const onSubmit = (data) => {
+    const { passwordOne, passwordTwo } = data;
 
-  const onSubmit = (data) => console.log(data);
+    if (passwordOne.length < 6 || passwordTwo.length < 6) {
+      return toast.error("Passwords Must Be Up To 6 Characters");
+    }
+
+    if (passwordOne !== passwordTwo) {
+      return toast.error("Password Didn't Match");
+    }
+
+    try {
+      const res = resetPassword(data, resetToken)
+      toast.success(res.message)
+    } catch (error) {
+      console.log(error)
+    }
+
+  };
 
   return (
     <div className={Styles.bgBackground}>

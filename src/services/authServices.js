@@ -50,3 +50,14 @@ export const forgertPassword = async (userData) => {
     toast.error(error.response.data.error, { id: "NHInventory" });
   }
 };
+
+export const resetPassword = async (userData, resetToken) => {
+  try {
+    const res = await axios.post(`${BACKEND_URL}/api/v1/user/resetpassword/${resetToken}`, userData);
+    toast.success(res.data.data);
+    return res.data
+  } catch (error) {
+    console.log(error);
+    toast.error(error.response.data.error, { id: "NHInventory" });
+  }
+};
