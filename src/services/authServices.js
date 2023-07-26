@@ -40,3 +40,13 @@ export const logOutUser = async () => {
     toast.error(error.response.data.error, { id: "NHInventory" });
   }
 };
+
+export const forgertPassword = async (userData) => {
+  try {
+    const res = await axios.post(`${BACKEND_URL}/api/v1/user/forgotpassword`, userData);
+    toast.success(res.data.data);
+  } catch (error) {
+    console.log(error);
+    toast.error(error.response.data.error, { id: "NHInventory" });
+  }
+};

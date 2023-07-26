@@ -3,6 +3,7 @@ import Styles from "../../styles/Login.module.css";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { AiOutlineMail } from "react-icons/ai";
+import { forgertPassword } from "../../services/authServices";
 
 const ForgetPassword = () => {
   const {
@@ -11,7 +12,10 @@ const ForgetPassword = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+   await forgertPassword(data)
+   console.log(data)
+  };
 
   return (
     <div>
