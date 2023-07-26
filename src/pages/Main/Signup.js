@@ -2,7 +2,7 @@ import React from "react";
 import Styles from "../../styles/Login.module.css";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { FiLogIn } from "react-icons/fi";
+import { BiUser } from "react-icons/bi";
 
 const Signup = () => {
   const {
@@ -19,7 +19,7 @@ const Signup = () => {
         <div className="w-full max-w-md bg-white rounded-lg  shadow-2xl">
           <div className="p-3">
             <h1 className=" flex items-center justify-center mb-1 mr-3">
-              <FiLogIn size="30" color="#363636" />
+              <BiUser size="30" color="#363636" />
             </h1>
             <h2 className="text-3xl text-center font-semibold text-slate-700">
               Sign Up

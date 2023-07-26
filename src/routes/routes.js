@@ -8,6 +8,7 @@ import ContactUs from "../pages/Dashboard/ContactUs";
 import Home from "../pages/Main/Home";
 import Login from "../pages/Main/Login";
 import Signup from "../pages/Main/Signup";
+import ForgetPassword from "../pages/Main/ForgetPassword";
 
 const routes = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const routes = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup />,
+      },
+      {
+        path: "/forget-password",
+        element: <ForgetPassword />,
       },
     ],
   },
