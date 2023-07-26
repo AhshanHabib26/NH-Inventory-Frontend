@@ -17,7 +17,7 @@ function Home() {
             <p className="py-6 text-white">
              Inventory Managment Solution Provide To Control and Manage Products in The Wirehouse in Real Time and Intgrated to Make it Easier To Develop Your Business.
             </p>
-            <Link to="/login" className="btn bg-white">Free Trial 1 Month</Link>
+            <Link to="/signup" className="btn bg-white">Free Trial 1 Month</Link>
             <div className="flex items-center justify-between mt-5">
               <div className="btnItem flex flex-col">
                 <p className="text-white  text-xl font-semibold">14K</p>

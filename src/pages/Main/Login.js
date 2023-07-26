@@ -37,13 +37,13 @@ const Login = () => {
                   {...register("password", { required: true })}
                 />
                 {errors.password && <span className=" text-red-500">Passowrd is required</span>}
-                <div className=" mx-2 my-5 flex items-center justify-between">
-                  <Link className=" text-teal-800 font-semibold" to="/signup">Sign Up</Link>
+                <div className=" mx-2 my-3 flex items-center justify-between">
+                  <Link className=" text-teal-800 font-semibold" to="/signup">Create an Account?</Link>
                   <Link className=" text-red-500 font-semibold" to="/forget-password">Forget Password?</Link>
                 </div>
                 <input
                   type="submit"
-                  className="btn mt-2 w-full max-w-lg bg-teal-800 hover:bg-teal-800 text-white"
+                  className="btn mt-1 w-full max-w-lg bg-teal-800 hover:bg-teal-800 text-white"
                   value="Login"
                 />
               </form>

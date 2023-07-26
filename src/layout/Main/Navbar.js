@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <div>
-      <div className="navbar  bg-teal-700 lg:px-16 md:px-8 px-3">
+      <div className="navbar py-0  bg-teal-700 lg:px-16 md:px-8 px-3">
         <div className="flex-1">
           <Link to="/" className=" normal-case text-xl text-white ">
             NHInventory
@@ -13,7 +13,7 @@ const Navbar = () => {
         <div className="flex-none">
           <ul className="menu menu-horizontal px-1">
             <div className="navbar-end">
-              <Link to="/login" className="btn  btn-md">
+              <Link to="/signup" className="btn  btn-md">
                 Register
               </Link>
             </div>
