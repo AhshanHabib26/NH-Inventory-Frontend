@@ -3,16 +3,15 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logOutUser } from "../../services/authServices";
 import { SET_LOGIN } from "../../redux/features/auth/authSlice";
+import { ShowLogout, ShowRegister } from "../../protects/Protects";
 
 const Navbar = () => {
-  const isToken = localStorage.getItem("token");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const logOutHandler = () => {
     logOutUser();
     dispatch(SET_LOGIN(false));
-    localStorage.removeItem("token");
     navigate("/");
   };
 
@@ -27,18 +26,19 @@ const Navbar = () => {
         <div className="flex-none">
           <ul className="menu menu-horizontal px-1">
             <div className="navbar-end">
-              {isToken ? (
+              <ShowRegister>
                 <button
                   onClick={logOutHandler}
                   className="btn border-0 text-white hover:bg-red-500  bg-red-600 btn-md"
                 >
                   Logout
                 </button>
-              ) : (
+              </ShowRegister>
+              <ShowLogout>
                 <Link to="/signup" className="btn  btn-md">
                   Register
                 </Link>
-              )}
+              </ShowLogout>
             </div>
           </ul>
         </div>
