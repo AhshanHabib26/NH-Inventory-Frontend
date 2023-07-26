@@ -1,5 +1,5 @@
 import React from "react";
-import inventoryImage from "../image/inventory.png";
+import inventoryImage from "../../image/inventory.png";
 import { Link } from "react-router-dom";
 
 function Home() {
