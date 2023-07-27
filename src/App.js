@@ -1,9 +1,9 @@
 import { RouterProvider } from "react-router-dom";
 import routes from "./routes/routes";
 import { Toaster } from "react-hot-toast";
-// import axios from "axios";
+import axios from "axios";
 
-// axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = true;
 
 function App() {
   return (
